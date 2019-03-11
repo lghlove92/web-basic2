@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>Title</title>
+        
+    </head>
+    <body>
+        <script type="text/javascript">
+            i=0;
+            while(i<100){
+                console.log("Hi");
+                break;
+            }
+            /* 
+            break : 만나는 순간 가장 가까운 반복문을 탈출
+            continue : 만나는 순간 반복문의 다음 회차로 이동
+            */
+
+            while(true){
+                console.log("메뉴");
+                console.log("1. 숫자 입력");
+                console.log("2. 문자 입력");
+                menu = prompt("메뉴를 선택하세요","1");
+                if(menu=="1"){
+                    console.log("숫자 입력 시작");
+                } else if(menu=="2"){
+                    console.log("문자 입력 시작");
+                } else if(menu=="3"){
+                    console.log("프로그램 종료");
+                    break;
+                }
+            }
+        </script>
+    </body>
+</html>

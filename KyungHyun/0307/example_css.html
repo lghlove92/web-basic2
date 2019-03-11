@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>Title</title>
+        <style>
+            /* 
+            css를 사용할 때 어떤 요소를 선택해서 어떤 스타일을 적용한다.
+            이떄 요소를 선택하는 방법을 셀렉터(요소선택자)라고 부릅니다.
+
+            기본 선택자
+            태그 : 태그이름
+            아이디 : 아이디
+            클래스 : 클래스명
+             */
+            p{
+                border:1px solid #d5d5d5;
+            }
+            #title {
+                color: red;
+            }
+
+            .default_text{
+                font-size: 2em;
+            }
+
+            span.default_text{
+                color: yellow;
+            }
+            
+            p.default_text.p_default{
+                font-weight: bold;
+            }
+
+            .default_text b{
+                border:1px solid red;
+
+            }
+            .default_text > b{
+                border:1px solid red;
+
+            }
+            /*
+                성진님 가방 안에 필통 안에 지우개
+                
+                성진님가방 > 필통 > 지우개
+                성진님 가방 필통 지우개
+
+                성진님 가방 > 지우개 * 지우개를 찾을 수 없다.
+                성진님 가방 지우개
+                
+            */
+        </style>
+
+    </head>
+    <body>
+        <p id="title" class="default_text p_default">
+            문단 내용
+        </p>
+        <p id="sub_title" class="default_text p_sub">
+            문단 내용
+        </p>
+        <span class="default_text">문장 <b>예시</b>입니다.</span>
+        <b>밖에 있는 B</b>
+        <table>
+            <tbody>
+                <tr>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                </tr>
+                <tr>
+                    <td>HTML</td>
+                    <td>CSS</td>
+                    <td>JS</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

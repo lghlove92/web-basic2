@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>Title</title>
+        
+    </head>
+    <body>
+        <script type="text/javascript">
+            // LEVEL 1.
+            // 1. 화씨 섭씨 변환하기      32°F − 32) × 5/9 = 0°C  
+            // °C = (°F - 32) / 1.8
+            //°F = °C × 1.8 + 32
+                                        
+
+            // 2. 섭씨 화씨 변환하기         (0°C × 9/5) + 32 = 32°F
+            // 이전에 변환한 기록이 있으면 해당 기록을 반환.
+            // 반환을 하면 기록 말소
+            // 상태를 저장할 줄 알아야 한다.
+            // flag 기법
+
+            // LEVEL 2.   onclick 이용
+            // 1. 화씨 섭씨 변환하기
+            // 2. 섭씨 화씨 변환하기 
+            // 3. 프로그램 종료하기  
+            
+            var a=0;
+            var b=0;
+            while(true){
+                console.log("화씨 섭씨 변환기");
+                console.log("1. 화씨 -> 섭씨 변환하기");
+                console.log("2. 섭씨 -> 화씨 변환하기");
+                console.log("3. 프로그램 종료");
+                menu = prompt("메뉴를 선택하세요","1. 화씨->섭씨  2. 섭씨->화씨 3. 프로그램종료");
+                
+                if(menu=="1"){
+                    var f = prompt("화씨는 몇도입니까?","F");
+                    if(f==b){
+                        console.log(c);
+                        b=0;
+                    }else{
+                    a=(f-32)/1.8;
+                    console.log("("+f+" - 32) / 1.8 = "+a)
+                    }
+                    
+                } else if(menu=="2"){
+                    var c = prompt("섭씨는 몇도입니까","C");
+                    console.log(a + "hgfjwegweiv")
+                    if(c == a){
+                        console.log(f);
+                        a=null;
+                    }else{
+                    b=(c*1.8)+32;
+                    console.log(c+" X 1.8 + 32 = "+b);
+                    }
+                }
+                else if (menu=="3"){
+                    console.log("프로그램 종료");
+                    break;
+                }
+            }
+
+           
+        </script>
+
+    </body>
+</html>

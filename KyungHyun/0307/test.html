@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>Table Test</title>
+    </head>
+    <body>
+        <!--
+            table 태그는 table로 시작
+            각 행은 tr
+            각 열은 td로 만든다.
+        -->
+        
+        <table border="1">
+            <table border="2">
+                <tr>
+                    <td>세계지도</td>
+                    <td>세계날짜</td>
+                    <td>세계시간</td>
+                    <td>국가번호</td>
+                    <td>환율</td>
+                </tr>
+            </table>
+            <table border="2">
+                <table border="1"> 
+                    <tr>
+                        <td>text1</td>
+                        <td rowspan="2"> 
+                            <table border="1">
+                                        <tr>
+                                            <td>blahblahblah</td>
+                                        </tr>
+                                        <tr>
+                                            <td>에베베베베베베</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <table border="1">
+                                                    <tr>
+                                                        <td><img src="image/d571a67d-6a0b-4ad9-a047-d3e9c9b05d2f.jpg"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>=</td>
+                                                     </tr>
+                                                    <tr>
+                                                        <td><img src="image/logo_coupang_w350.png"></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="image/45efbfe1-fe4b-4735-9dc1-e6328bc9f7d3.jpg"></td>
+                    </tr>
+                </table> 
+            </table>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <td>통화명</td>
+                        <td>매매기준율</td>
+                        <td>전일대비</td>
+                        <td>등락률</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>미국 USD</td>
+                        <td>1,128.80</td>
+                        <td>▼ 0.20</td>
+                        <td>-0.02%</td>
+                    </tr>
+                    <tr>
+                        <td>일본 JPY</td>
+                        <td>1,011.15</td>
+                        <td>▲ 1.99</td>
+                        <td>+0.20%</td>
+                    </tr>
+                    <tr>
+                        <td>유럽연합 EUR</td>
+                        <td>1,276.73</td>
+                        <td>▲ 0.62</td>
+                        <td>+0.05%</td>
+                    </tr>
+                    <tr>
+                        <td>중국 CNY</td>
+                        <td>168.08</td>
+                        <td>▼ 0.03</td>
+                        <td>-0.02%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </table>
+        
+    </body>
+</html>
