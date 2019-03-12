@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>CSS Basic</title>
+        <style>
+        </style>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <style>
+            /* 셀렉터의 우선순위
+                태그 -> 클래스 -> 아이디
+                simple -> complex
+                */
+            .test{
+                color: red; /*요소의 텍스트 색상*/
+                /*color: rgb(255, 100, 0);*/
+            }
+            a{
+                color: red; /*요소의 텍스트 색상*/
+               /* color: rgb(255, 100, 0);*/
+            }
+            .div_test{
+                height: 500px;
+                background:#d5d5d5;
+                background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl_vfwL_Rtf7jG5LJerBEbVAnytBu9LGjeqlwOXIkPBvGG5npFeA) no-repeat center -15px;
+                background-size: contain;
+            }
+            .link_test{
+                width: 27px;
+                height: 23px;
+                background: url(https://github.com/Baepeu/frontend_school_1901/blob/master/src/css_basic/images/sprite.png?raw=true) no-repeat;
+                background-position: -77px -159px;
+                overflow: hidden;
+                display: inline-block;
+                text-indent: -999px;
+                
+                border: 1px solid #d5d5d5;
+                border-bottom: 3px dashed;
+                border-bottom-color: red;
+                border-left-style: dotted;
+                border-radius: 5px;
+
+                
+                padding:0px;        /* 상하좌우 */
+                padding: 0px 5px;   /* 상하 좌우 */
+                padding: 0px 5px 7px;   /* 상 좌우 하 */
+                padding: 0px 5px 7px 9px; /* 상 우 하 좌 */
+            
+                box-shadow: 47px 1px 11px 4px red; /* x-position y-position blur radius */
+                margin: 0px; /* 다른 요소와의 거리 */
+                /* margin:0px 5px 10px 7px; */
+                /* margin-left:0px; 상하좌우 별도의 속성값이 존재함 */
+                padding :0px; /* 해당 요소 안에 있는 컨텐츠 영역의 여백 */
+
+                /*
+                    width, height를 가지고 요소의 크기를 결정하려면 display가 block(inline-block) 형태여야 한다.
+                    min-width, max-width
+                    min-height, max-hight 
+                */
+                vertical-align: middle;
+                overflow: hidden;
+                z-index: 3;
+
+            }
+
+            .link_test_hover{
+                background-position: -51px -159px;
+            }
+
+            .link_test_visited{
+               
+                background-position: -26px -159px;
+
+            }
+            /*
+                버튼 사이즈 : 25px 23px
+                검정 이미지 위치 : -26px -159px
+                기본 : 빈 하트
+                마우스 오버 : 빨간 하트
+                visited : 검정하트
+            */
+        </style>
+        
+        <a href="#" style="" class="test">버튼</a>
+        <div class="div_test">ABCDE</div>
+
+        <a href="https://www.naver.com" class="link_test" >Test</a>
+        <script type="text/javascript">
+            $( ".link_test" ).hover(
+                function() {
+                    $( this ).addClass( "link_test_hover" );
+                }, function() {
+                    $( this ).removeClass( "link_test_hover" );
+                }
+             );
+
+            $(".link_test").click(
+                function(e){
+                    e.preventDefault
+                }
+            )
+        </script>
+        
+    </body>
+</html>

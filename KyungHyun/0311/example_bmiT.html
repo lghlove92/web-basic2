@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko" >
+ <head>
+   <meta charset="utf-8" />
+   <title>0311 EXAM</title>
+   <style>
+   #content{
+     border: 1px dotted red;
+     width: 30%;
+     height :20%;
+     margin: 0 auto;
+     text-align: center;
+   }
+   #level{
+     border: 1px solid;
+     width:30%;
+     height:20;
+     margin:0 auto;
+     text-align: center;
+   }
+   </style>
+   
+ </head>
+ <body>
+   <div id="content"></div>
+   <div id="level"></div>
+
+   <script type="text/javascript">
+        var weight = prompt("몸무게를 입력해주세요.", ""); // 1. 몸무게 입력 받음
+        var height = prompt("키를 입력해주세요.", ""); // 2. 키 입력 받음
+
+        weight = Number(weight);
+        height = Number(height) / 100; // 3. 숫자로 형변환
+
+        var bmi = weight / height ** 2; // 4. bmi 계산
+
+        if (bmi != null) {
+        document.getElementById("content").innerHTML = bmi; // 5. 출력
+        }
+
+        if (bmi < 18.5) {
+        document.getElementById("level").innerHTML = "저체중";
+        } else if (bmi >= 18.5 && bmi < 23) {
+        document.getElementById("level").innerHTML = "정상체중";
+        } else if (bmi >= 23) {
+        document.getElementById("level").innerHTML = "과체중";
+        }
+
+     
+   </script>
+ </body>
+</html>
