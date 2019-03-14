@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>Javascript</title>
+        <script type="text/javascript">
+            /*
+                window 객체 : 브라우저를 제어하는 객체
+                .open(주소) : 새로운 창을 연다.
+                .close() : 현재 창을 닫는다.
+                .print() : 현재 창을 출력하는 다이얼로그를 나타낸다.
+
+                alert() : 경고 메세지 출력
+                변수 = prompt("질문","기본값") : 입력받기
+                변수 = confirm("확인문구") : true, false값을 반환받는다.
+
+                .innerHeight,  .innerWidth : 창(보이는 영역)의 높이와 너비
+                window.pageX0ffset, window.pageY0ffset : 스크롤된 수치
+
+                .resizeTo(x,y), .resizeBy(x,y) : By +,-
+                .scrollTo(x,y), .scrollBy(x,y) : By +,-
+                
+                
+                // 꾸준히 여러번 실행할 코드
+                변수 = window.setInterval(function(){
+                    [실행할 코드]
+                },1000);
+
+                window.clearInterval(변수);
+
+                // 한번 실행할 코드
+                변수 = window.setTimeout(function(){
+                    [실행할 코드]
+                },1000);
+
+                window.clearTimeout(변수);
+
+                screen.width        : 화면 해상도크기
+                screen.height
+                screen.availWidth   : 실제 이용 가능한 화면 영역
+                screen.availHeight
+
+                history.length : 쌓여있는 페이지 갯수
+                history.back : 이전 페이지로
+                history.forward : 다음 페이지로
+                history.go : +,- 페이지 이동
+
+                navigator.platform : 운영체제 종류
+                navigator.userAgent : 브라우저 종류
+                navigator.language : 언어 종류
+                navigator.geolocation.getCurrentPosition(function(position) 
+                {console.log(position.coords.latitude, position.coords.longitude)});
+                : 위치?
+
+                location : 페이지를 제어하는거
+                location.href :"https://www.google.com/"  현재 주소
+                location.protocol : "https:" 메서드
+                location.host : 메인페이지 도메인주소
+                location.search : query String
+                location.hash : anchor 값
+
+                location.href = "주소" : 페이지 이동
+                location.replace("주소") : 페이지 갈아끼기
+                location.reload() : 페이지 새로고침
+            */
+
+            $(function(){
+                $(document).on('mouseover','.test',function(){
+                    console.log('111');
+                });
+                $(document).on('click','.tt',function(){
+                
+                });
+
+                $('.tt').click(function(){
+                    $('body').append('<div class="test">Javascript method basic</div>');
+                    $('.tt').click();
+                });
+            });
+        </script>
+    </head>
+    <body>
+        Javascript Method Basic<br>
+        Javascript Method Basic<br>
+    </body>
+</html>

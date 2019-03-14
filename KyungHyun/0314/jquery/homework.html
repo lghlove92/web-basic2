@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>Javascript</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        /*
+            form 태그의 입력완료 이벤트 : submit
+            각 input 태그의 값은 $(요소).val()읽고 
+            변경하려면 $(요소).val(값)으로 하면 된다.
+        */
+        $(document).ready(function () {  //시작한다
+            $('form').submit(function (e) {  //이벤트함수
+                e.preventDefault(); //원래 기능 차단시킨다
+                // alert($('input[name="id"]').val());
+                // $('input[name="name"]').val($('input[name="id"]').val());
+                // $('li').text($('input[name="id"]').val());
+                $('ul').append("<li class='list-group-item'>" + $('input[name="id"]').val() +"<button type='remove' class='btn btn-danger delB'>삭제</button>" +"</li>");
+            });
+            // $('.delB').click(function () {
+            //     $('ul li:first-child').remove(); //ul밑에 li 첫번째 자식만 지운다.
+            // });
+            $(document).on('click', '.delB', function() {
+                $(this).parent().remove();
+            });
+        });
+    </script>
+    <style>
+        .delB{
+            float: right;
+        }    
+    </style>
+</head>
+
+<body>
+    <!--
+            form : 사용자의 입력받기 위해 사용하는 태그
+            action : 입력받은 내용을 전달할 페이지
+            method : get, post
+        -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-8">
+                <form class="form-inline">
+                    <input type="text" name="id" class="form-control mb-2 mr-sm-2">
+        
+                    <button type="submit" class="btn btn-primary mb-2 mr-2">추가</button>
+                    <button type="button" class="btn btn-primary mb-2" id="del">삭제</button>
+                </form>
+        
+            </div>
+            <!-- <div class="col-2"></div> -->
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-5">
+                <ul class="list-group list-group-flush">
+                </ul>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
