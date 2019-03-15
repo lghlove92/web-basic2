@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>Title</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script type="text/javascript">
+
+            /* function loto(){
+                for(j=0;j<5;j++){
+                   var original_numbers = [];
+
+                    for(i=1;i<46;i++){
+                    original_numbers.push(i);
+                    }
+                    var numbers = [];
+                    var numbers_bo = [];
+                    for(i=0;i<6;i++){
+                        var number_index = Math.floor((Math.random() *original_numbers.length)); //숫자 뽑는거
+                        var get_number = original_numbers[number_index];
+                        numbers.push(get_number);
+                        original_numbers.splice(number_index,1);
+                    }ㄴ
+                    numbers.sort(function(a, b){return a-b});
+                    console.log(numbers,numbers_bo);
+                   
+               }
+        
+            } */
+            $('#start').click(function () {
+                
+            })
+            function loto(){
+                for(j=0;j<5;j++){
+                   var original_numbers = [];
+
+                    for(i=1;i<46;i++){
+                    original_numbers.push(i);
+                    }
+                    var numbers = [];
+                    var numbers_bo = [];
+                    for(i=0;i<6;i++){
+                        var number_index = Math.floor((Math.random() *original_numbers.length)); //숫자 뽑는거
+                        var get_number = original_numbers[number_index];
+                        numbers.push(get_number);
+                        original_numbers.splice(number_index,1);
+                    }ㄴ
+                    numbers.sort(function(a, b){return a-b});
+                    console.log(numbers,numbers_bo);
+                   
+               }
+        
+            }
+            
+           
+
+        </script>
+    </head>
+        
+
+    <body>
+        <!-- 
+        로또 번호는 1~45까지의 정수 중에서 중복되지 않는 숫자 6개를 뽑는 게임
+        로또 용지 1장은 최대 5게임을 표현할 수 있습니다.
+        1게임 1,000원 , 최대 1장은 5,000원 
+        1) 로또 번호 1게임을 뽑게 해준다.
+        2) 로또 번호 5게임을 뽑게 해준다.
+        3) 로또 번호를 지정된 게임 수만큼 뽑게 해준다.
+        4) 지정된 게임 수만큼 뽑고, 비용을 출력한다.
+        -->
+        <div class="container">
+            <div class="jumbotron">
+                    <select class="form-control">
+                        <option>1,000원 1장</option>
+                        <option>2,000원 2장</option>
+                        <option>3,000원 3장</option>
+                        <option>4,000원 4장</option>
+                        <option>5,000원 5장</option>
+                    </select>   
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                            <th scope="col">나눔로또</th>
+                            <th scope="col">1</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">4</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">5</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                        
+                        
+                    <hr class="my-4">
+                    <!-- <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> -->
+                    <a class="btn btn-primary btn-lg" id="start" role="button" onclick="loto()">로또 번호뽑기</a>
+                    </div>
+        </div>
+        <!-- <div class="jumbotron">
+            <select class="form-control">
+                <option>1,000원 1장</option>
+                <option>2,000원 2장</option>
+                <option>3,000원 3장</option>
+                <option>4,000원 4장</option>
+                <option>5,000원 5장</option>
+            </select>   
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">나눔로또</th>
+                    <th scope="col">1</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+              
+            <hr class="my-4">
+            <a class="btn btn-primary btn-lg" id="start" role="button" onclick="loto()">로또 번호뽑기</a>
+          </div> -->
+        
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+    
+</html>

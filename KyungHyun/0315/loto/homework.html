@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#start').click(function () {
+                $('tbody > *').remove();
+                var time = $('.custom-select').val();
+                for (j = 0; j < time; j++) {
+                    var original_numbers = [];
+
+                    for (i = 1; i < 46; i++) {
+                        original_numbers.push(i);
+                    }
+                    var numbers = [];
+                    var numbers_bo = [];
+                    for (i = 0; i < 6; i++) {
+                        var number_index = Math.floor((Math.random() * original_numbers.length)); //숫자 뽑는거
+                        var get_number = original_numbers[number_index];
+                        numbers.push(get_number);
+                        original_numbers.splice(number_index, 1);
+                    }
+                    numbers.sort(function (a, b) { return a - b });
+                    /* console.log(numbers.join("</td><td>"));
+                    console.log("<tr><th>" + (Number(j) + 1) + "</th><td>" + numbers.join("</td><td>") + "</td></tr>"); */
+                    $('tbody').append("<tr><th>" + (Number(j) + 1) + "</th><td>" + numbers.join("</td><td>") + "</td></tr>")
+                }
+            });
+        });
+    </script>
+    <style>
+        .custom-select {
+            width: calc(100% - 131px);
+        }
+        .table td, .table th{
+            width: 14.2857%;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <select class="custom-select">
+                    <option>Open this select menu</option>
+                    <option value="1">1,000원 1장</option>
+                    <option value="2">2,000원 2장</option>
+                    <option value="3">3,000원 3장</option>
+                    <option value="4">4,000원 4장</option>
+                    <option value="5">5,000원 5장</option>
+                </select>
+                <button type="button" class="btn btn-outline-dark" id="start">로또 번호뽑기</button>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">나눔로또</th>
+                            <th scope="col">1</th>
+                            <th scope="col">2</th>
+                            <th scope="col">3</th>
+                            <th scope="col">4</th>
+                            <th scope="col">5</th>
+                            <th scope="col">6</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

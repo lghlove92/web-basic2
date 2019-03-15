@@ -9,9 +9,14 @@
                 weight = prompt();
                 height = prompt();
             }
+
+            $('#as').click(function() {
+                weight = prompt();
+                height = prompt();
+            });
         </script>
     </head>
     <body>
-        <span onclick="abc();"> 함수 실행하기</span>
+        <span id="as" onclick="abc();"> 함수 실행하기</span>
     </body>
 </html>
