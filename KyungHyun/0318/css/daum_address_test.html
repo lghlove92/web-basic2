@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>우편번호 검색기 실습</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <style>
+
+    </style>
+    </head>
+        
+
+    <body>
+            <!-- 
+            회원가입창 만들기
+            1. 아이디
+            2. 비밀번호
+            3. 이름
+            4. 주소 - 우편번호, 주소, 주소 디테일, 우편번호 찾기
+            5. 회원가입 확인버튼 - submit
+
+            * 회원 가입 확인 버튼을 눌렀을 때
+            모든 결과를 하나로 합쳐서 alert 창에 띄워주세요. 
+            -->
+            <!-- 
+                from tag
+                    input, select, textarea
+                    input - type => text, email, phone, data, password, hidden
+             -->
+
+    
+        <form action="#" method="post" id="join_form">
+            <label>아이디 : <input type="text" name="id" id="input_id" value="Mickey"></label><br>
+            비밀번호 : <input type="text" name="password" id="input_ps"value="Mouse"><br>
+            이름 : <input type="text" name="name" id="input_name" value="Lee"><br>
+            이메일 : <input type="text" name="mail" id="input_mail" value="@naver.com"><br>
+            주소 : 
+            <br>
+            <input type="text" name="address" placeholder="우편번호" id="address_jon"><br>
+            <input type="text" name="address" placeholder="도로명 주소 입력" id="address"><br>
+            <input type="text" name="address" placeholder="세부주소" id="address_detail">
+            <a href="#" id="zipcode_search">우편번호 찾기</a><br>
+            <input type="submit" value="회원가입">
+        </form>
+        
+        
+        
+        <script>
+        $(function(){
+            $('#zipcode_search').click(function () {
+                new daum.Postcode({
+                    oncomplete: function(data) {
+                        console.log(data);
+                        $('#address_jon').val(data.zonecode);
+                        $('#address').val(data.address);
+                        
+                    }
+                }).open();
+            })
+            $('form').submit(function (e) {  //이벤트함수
+                e.preventDefault();
+                if($('#input_id').val()=='') {
+                    alert('아이디를 입력하세요.');
+                    return false;
+                } else if ($('#input_ps').val()=='') {
+                    alert('비밀번호를 입력하세요.');
+                    return false;
+                } else if ($('#input_name').val()=='') {
+                    alert('이름을 입력하세요.');
+                    return false;
+                } else if ($('#input_mail').val()=='') {
+                    alert('이메일을 입력하세요.');
+                    return false;
+                } else if ($('#address').val()=='') {
+                    alert('주소를 입력하세요.');
+                    return false;
+                } else if ($('#address_detail').val()=='') {
+                    alert('세부주소를 입력하세요.');
+                    return false;
+                } else {
+                    alert(
+                        "아이디 : "+$('#input_id').val() +"\n"+
+                        "비밀번호 : "+$('#input_ps').val() +"\n"+
+                        "이름 : "+$('#input_name').val() +"\n"+
+                        "이메일 : "+$('#input_mail').val() +"\n"+
+                        "우편번호 : "+$('#address_jon').val() +"\n"+
+                        "주소 : "+$('#address').val() +"\n"+
+                        "세부주소 : "+$('#address_detail').val() +"\n"
+                        );
+                }
+               
+                
+            })
+            
+
+                /* if(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i.test($('#email').val())==false) {
+                    alert("이메일 형식이 잘못되었습니다.");
+                    return false;
+                } */
+
+                // 최종 안내 문구 출력
+                // 정규표현식 -
+        
+        })
+        
+        </script>
+        <!-- 
+            과제
+            1. 모든 항목에 벨리데이션
+            2. 정규표현식 - 
+         -->
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>Title</title>
+    <style>
+        .mainmenu{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            
+        }
+        .main_menu_item{
+            /* display: inline-block; */
+            width: 10%;
+            /* box-sizing: border-box; */
+            /* background: #5a5a5a; */
+        }
+        .submenu{
+            display: none;
+        }
+        .mainmenu:hover .submenu{
+            display: block;     /* 영역을차지하자 */         
+        }
+
+        .sub_menu_item{
+            list-style: none;
+        }
+
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+        
+
+    <body>
+        <ul class="mainmenu">
+            <li class="main_menu_item"><a>브랜드패션<a></li>
+            <li class="main_menu_item"><a>의류/잡화</a></li>
+            <li class="main_menu_item"><a>뷰티</a></li>
+            <li class="main_menu_item"><a>레저/자동차</a></li>
+            <li class="main_menu_item"><a>식품<a></li>
+            <li class="main_menu_item"><a>출산/육아</a></li>
+            <li class="main_menu_item"><a>가구인테리어</a></li>
+            <li class="main_menu_item"><a>디지털/가전/컴퓨터</a></li>
+            <li class="sub_menu_wrapper">
+                <ul>
+                    <li class="sub_menu_item"></li>
+                    <li class="sub_menu_item"></li>
+                    <li class="sub_menu_item"></li>
+                    <li class="sub_menu_item"></li>
+                </ul>
+            </li>
+        </ul>
+        
+    </body>
+</html>
