@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <style>
+    </style>
+    </head>
+
+    <body>
+        <form id="content_form">
+            <input type="text" name="content1" id="content1">
+            <input type="text" name="content2" id="content2">
+            <input type="text" name="content3" id="content3">
+            <button id="btn_save">Save</button>
+            <button id="btn_load">Load</button>
+        </form>
+        
+        <script type="text/javascript">
+            /* 
+                Web Storage
+
+                쿠키의 단점을 보완하기 위해 나온 저장소
+                Server Session, Client Cookie
+
+                LocalStorage : 
+                sessionStorage :
+
+                저장할 떄는 저장할 데이터에 대한 키(key) 값 - setItem
+                불러올 때는 저장할 때 사용한 키(key) 값을 이용해 불러온다. -getItem
+
+             */
+             var storage_key = "content";
+             $(function () {
+                 $('#btn_save').click(function () {
+                    // 폼 데이터를 문자열로 합치기
+                    var form_content = $('#content_form').serialize();
+                    
+                    // 합친 문자열을 localStorage에 저장
+                    localStorage.setItem(storage_key, form_content);
+
+                    // 폼 submit이 일어나지 않게
+                    return false;
+                    //  localStorage.setItem(storage_key, $('#content').val());
+                 });
+
+                 $('#btn_load').click(function () {
+                    var form_content = localStorage.getItem(storage_key);
+                    var split_data = form_content.split("&");
+                    for(var i in split_data) {
+                        var content_data = split_data[i].split("=");
+                        var key = content_data[0];
+                        var data = content_data[1];
+                        $('#'+key).val(data);
+                    }
+                    return false;
+                 });
+             });
+        
+        </script>
+
+   
+    </body>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>

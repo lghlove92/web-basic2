@@ -69,30 +69,12 @@
             <input type="text" name="address_jon" class="form-control" placeholder="우편번호" id="address_jon">
             <input type="text" name="address" class="form-control" placeholder="도로명 주소 입력" id="address">
             <input type="text" name="address_detail" class="form-control" placeholder="세부주소" id="address_detail">
-            <!-- <a href="#" id="zipcode_search">우편번호 찾기</a><br> -->
             
             <button class="btn btn-lg btn-primary btn-block" type="submit" id="btn_save">회원가입</button>
             <button class="btn btn-lg btn-primary btn-block" type="button" id="btn_load">Load</button>
-
-            <!-- <p class="mt-5 mb-3 text-muted">&copy; 2017-2019</p> -->
         </form>
     </body>
-            <!-- 
-            회원가입창 만들기
-            1. 아이디
-            2. 비밀번호
-            3. 이름
-            4. 주소 - 우편번호, 주소, 주소 디테일, 우편번호 찾기
-            5. 회원가입 확인버튼 - submit
-
-            * 회원 가입 확인 버튼을 눌렀을 때
-            모든 결과를 하나로 합쳐서 alert 창에 띄워주세요. 
-            -->
-            <!-- 
-                from tag
-                    input, select, textarea
-                    input - type => text, email, phone, data, password, hidden
-             -->
+        
 
     
         
@@ -133,40 +115,32 @@
                     alert('세부주소를 입력하세요.');
                     return false;
                 } else {
-                    /* alert(
-                        "아이디 : "+$('#input_id').val() +"\n"+
-                        "비밀번호 : "+$('#input_ps').val() +"\n"+
-                        "이름 : "+$('#input_name').val() +"\n"+
-                        "이메일 : "+$('#input_mail').val() +"\n"+
-                        "우편번호 : "+$('#address_jon').val() +"\n"+
-                        "주소 : "+$('#address').val() +"\n"+
-                        "세부주소 : "+$('#address_detail').val() +"\n"
-                        ); */
-                    /* localStorage.setItem("id",$('#input_id').val());
-                    localStorage.setItem("ps",$('#input_ps').val());
-                    localStorage.setItem("name",$('#input_name').val());
-                    localStorage.setItem("mail",$('#input_mail').val());
-                    localStorage.setItem("zipcode",$('#address_jon').val());
-                    localStorage.setItem("address",$('#address').val());
-                    localStorage.setItem("home",$('#address_detail').val()); */
-                    // 폼 데이터를 문자열로 합치기
-                    var form_content = $('#content_form').serialize();
-                    // 합친 문자열을 localStorage에 저장
-                    localStorage.setItem(storage_key, form_content);
+                    var content = {} // dictionary (사전형)
+                    content['input_id'] = $('#input_id').val();
+                    content['input_ps'] = $('#input_ps').val();
+                    content['input_name'] = $('#input_name').val();
+                    content['input_mail'] = $('#input_mail').val();
+                    content['address_jon'] = $('#address_jon').val();
+                    content['address'] = $('#address').val();
+                    content['address_detail'] = $('#address_detail').val();
+                    console.log(content);
+                       
+                    // 사전형(제이선) content를  문자열로 형변환 한것을 content_string 변수에 넣어준다.
+                    var content_string = JSON.stringify(content);
+                    // console.log(content_string);
+                    // 문자열로 형변환된 값을 content(storage_key)라는 key인 localstorage에 저장한다.
+                    localStorage.setItem(storage_key, content_string);
                     return false;
                 }
                
                 
             })
             $('#btn_load').click(function () {
-                    var form_content = localStorage.getItem(storage_key);
-                    form_content = decodeURIComponent(form_content); // url인코딩된걸 디코딩 해주는거
-                    var split_data = form_content.split("&");
-                    for(var i in split_data) {
-                        var content_data = split_data[i].split("=");
-                        var key = content_data[0];
-                        var data = content_data[1];
-                        $('#'+key).val(data);
+                    var form_content = localStorage.getItem(storage_key);  //localstorage에 저장된 storage_key에 해당되는 값을 가져와서  form_content에 넣는다
+                    content_dict = (JSON.parse(form_content)); //문자열인 form_content를 사전형(JSON.parse) 으로 형변환해서 content_dict에 넣는다.
+                    for(var key in content_dict) {                  //
+                        $('#'+key).val(content_dict[key]);
+                        console.log(content_dict[key]);
                     }
                     return false;
                  });

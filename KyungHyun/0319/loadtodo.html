@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>Javascript</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+     var storage_key = "content";
+        function todosave() {
+            var content = {};
+           
+            $('li').children('span').each( function(index) {
+               /*  console.log(index);
+                console.log($(this).text()); */
+                content[index] = $(this).text();
+            } );
+            // console.log(content);
+            var content_string = JSON.stringify(content);
+            localStorage.setItem(storage_key, content_string);
+
+        }
+        function todoload() {
+            $('ul').children("li").remove();
+            var form_content = localStorage.getItem(storage_key);  //localstorage에 저장된 storage_key에 해당되는 값을 가져와서  form_content에 넣는다
+                content_dict = (JSON.parse(form_content)); //문자열인 form_content를 사전형(JSON.parse) 으로 형변환해서 content_dict에 넣는다.
+                for(var key in content_dict) {                  //
+                    $('#'+key).val(content_dict[key]);
+                    $('ul').append("<li class='list-group-item'>" + "<span>"+ content_dict[key]+"</span>" +"<button type='remove' class='btn btn-danger delB'>삭제</button>" +"</li>");
+                    console.log(content_dict[key]);
+                    console.log(key);
+                }
+                return false;
+            
+            
+        }
+        $(function () {  //시작한다
+            $('form').submit(function (e) {  //이벤트함수
+                e.preventDefault(); //원래 기능 차단시킨다
+                
+                $('ul').append("<li class='list-group-item'>" + "<span>"+ $('input[name="id"]').val()+"</span>" +"<button type='remove' class='btn btn-danger delB'>삭제</button>" +"</li>");
+                
+            });
+            
+            $(document).on('click', '.delB', function() {
+                $(this).parent().remove();
+            });
+
+            $('#todosave').click(function () {
+                todosave();
+            });
+            $('#todoload').click(function () {
+                todoload();
+            });
+        });
+    </script>
+    <style>
+        .delB{
+            float: right;
+        }    
+    </style>
+</head>
+
+<body>
+    
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-8">
+                <form class="form-inline" id="content_form">
+                    <input type="text" name="id" class="form-control mb-2 mr-sm-2">
+        
+                    <button type="submit" class="btn btn-primary mb-2 mr-1">추가</button>
+                    <button type="button" class="btn btn-primary mb-2 mr-1" id="todosave">저장</button>
+                    <button type="button" class="btn btn-primary mb-2 mr-1" id="todoload">불러오기</button>
+                </form>
+        
+            </div>
+            <!-- <div class="col-2"></div> -->
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-5">
+                <ul class="list-group list-group-flush">
+                </ul>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
