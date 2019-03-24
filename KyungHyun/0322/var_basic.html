@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    
+        <style>
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+        <span id="span_test">test</span>
+
+        <script type="text/javascript">
+            var a = document.getElementById('elm_id');
+            a.click(function () {});
+            
+            var b = $('#id');
+            b.click(function () {});
+            
+            var c = $(a);              // jQuery로 포장하기
+            c.click(function () {});
+            
+
+
+
+
+            // 일정 스코프 내에서 동작하는 변수 - 지역변수
+            // 함수에서는 왠만하면 var로 변수선언해서 사용한다.
+            var value1 = "1";
+
+            // 전역
+            value2 = "2";
+
+            // 변수의 지역 문제
+            // 콜백 지옥
+            $(function () {
+                var elem = $("<p id='p_test'>test_p</p>");         // 요소만들고
+                elem.click(function () { alert('p click');});         // 이벤트걸고
+
+                var ele2 = $("<p id='p_test2'>test_p2</p>");
+
+                $('#span_test').append(elem);                      // 추가한다.
+                $('#span_test').append(elem2);
+               
+                elem2.click(function () { alert('p2 click');});
+
+                var ele3 = $("<p id='p_test3'>test_p3</p>");
+                $(elem3).click(function () { alert('p3 click');});
+                $('#span_test').append(elem3);
+
+                var ele4 = $("<p id='p_test4'>test_p2</p>");
+                $(elem4).click(function () { alert('p4 click');});
+                $('#span_test').append(elem4);
+                 // jquery로 감싼거랑 안감싼거랑 아예 서로 다른 거가 된다
+
+                 // 마커 변수를 만들고
+                 // 그 변수에 이벤트 리스너 걸기
+            })
+
+
+        </script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    </body>
+</html>

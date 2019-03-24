@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>간단한 지도 표시하기</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=arlv2niolv&submodules=geocoder"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div id="test_naver_map" style="width:50%;height:500px;"></div>
+
+<input type="text" id="address"><button id="btn_address">주소찾기</button>
+
+<script>
+var mapOptions = {
+    center: new naver.maps.LatLng(37.543621, 127.062489),
+    zoom: 15,
+    scaleControl: true,
+    logoControl: true,
+    mapDataControl: true,
+    mapTypeControl: true,
+    zoomControl: true,
+    zoomControlOptions: {
+        position: naver.maps.Position.RIGHT_CENTER
+    },
+};
+
+var naver_map = new naver.maps.Map($('#test_naver_map')[0], mapOptions);  // 제이쿼리 포장을 [0]을 붙여서 벗긴다.   Jquery 사용할때 이용
+naver_map.setMapTypeId(naver.maps.MapTypeId.NORMAL);
+
+var locationBtnHtml = '<a href="#" class="btn_mylct"><span class="spr_trff spr_ico_mylct">NAVER 그린팩토리</span></a>';
+
+var customControl = new naver.maps.CustomControl(locationBtnHtml, {
+    position: naver.maps.Position.TOP_LEFT
+});
+
+customControl.setMap(naver_map);
+
+var testHTML = '<button class="btn btn-warning">TEST</button>';
+var btnControl =  new naver.maps.CustomControl(testHTML, {
+    position: naver.maps.Position.LEFT_CENTER
+});
+btnControl.setMap(naver_map);
+
+// 사용자 정의 컨트롤에 이벤트 연결
+$('.btn_mylct').click(function () {
+    alert('test');
+})
+$('.btn.btn-warning').click(function () {
+   naver_map.panBy(new naver.maps.Point(10, 10));
+})
+
+
+// 마커 이벤트
+function test() {
+    alert('in test functino');
+}
+
+// 마커 추가
+/* var marker = new naver.maps.Marker({
+    position: new naver.maps.LatLng(37.3595704, 127.105399),
+    map: naver_map
+}); */
+// 마커 계속 찍기
+naver.maps.Event.addListener(naver_map, 'click', function(e) {
+    // marker.setPosition(e.latlng);
+    var marker = new naver.maps.Marker({
+        position: e.latlng,
+        map: naver_map
+    });
+    // 마커 찍을때 중앙으로 이동
+    naver_map.setCenter(e.latlng);
+
+    // 마커에 이벤트 추가
+    naver.maps.Event.addListener(marker, 'click',test);
+});
+
+// geocoding
+$('#btn_address').click(function () {
+    $('#address').val();
+
+    naver.maps.Service.reverseGeocode({
+        location: new naver.maps.LatLng(37.3595316, 127.1052133),
+    }, function(status, response) {
+        if (status !== naver.maps.Service.Status.OK) {
+            return alert('Something wrong!');
+        }
+
+        var result = response.result, // 검색 결과의 컨테이너
+            items = result.items; // 검색 결과의 배열
+        console.log(items[0]);
+
+        var item = items[0];
+        var marker = new naver.maps.Marker({
+            position: new naver.maps.Point(item.point.x,item.point.y),
+            map: naver_map
+        // do Something
+         });
+         naver_map.setCenter(new naver.maps.Point(item.point.x,item.point.y));
+    });
+});
+</script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

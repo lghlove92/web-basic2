@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      header {
+        width: 100%;
+        position: relative;
+      }
+
+      .container1 {
+        height: 50px;
+        background-color: #ff0;
+      }
+
+      .container2 {
+        height: 50px;
+        background-color: red;
+      }
+
+      .logo {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .user {
+        /* margin-top: 15px; */
+        float: right;
+        background-color: #fff;
+      }
+
+      .nav {
+        width: calc(100px);
+        margin-left: 100px;
+        background-color: #fff;
+        /* width: 500px; */
+        display: inline-block;
+        margin-top: 15px;
+      }
+      .list {
+        margin: 0;
+        padding: 0;
+      }
+      .list li {
+        display: inline-block;
+      }
+      .search {
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container1">
+        <div class="logo">로고</div>
+        <div class="user">
+          <ul class="list">
+            <li>가입</li>
+            <li>로그인</li>
+            <li>기타</li>
+          </ul>
+        </div>
+      </div>
+      <div class="container2">
+        <div class="nav">네비</div>
+        <div class="search">검색</div>
+      </div>
+    </header>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+
+    <body>
+        <script>
+            var test = '1';
+            function print() {
+                console.log(test);
+                // 호이스팅 : 변수를 정의하면 변수가 영향을 미치는 스코프(영역) 안에서 최상단으로 변수의 정의부를 이동시킨다.
+                var test = '2';
+                console.log(test);
+                
+            }
+            print();
+            console.log(test);
+        
+        </script>
+
+   
+    
+    </body>
+</html>

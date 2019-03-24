@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=arlv2niolv&submodules=geocoder"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    <script type="text/javascript">
+        function mark(e) {
+            var marker = new naver.maps.Marker({
+                position: e.latlng,
+                map: naver_map
+            });
+            naver_map.setCenter(e.latlng);
+            // naver.maps.Event.addListener(marker, 'click', test);
+            naver.maps.Event.addListener(marker, "click", function (e) {
+                console.log("ahah")
+                if (infowindow.getMap()) {
+                    infowindow.close();
+                } else {
+                    infowindow.open(naver_map, marker);
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div id="test_naver_map" style="width:50%;height:500px;"></div>
+
+    <button id="btn_address">주소찾기</button>
+    <script>
+        var mapOptions = {
+            center: new naver.maps.LatLng(37.5666805, 126.9784147),
+            zoom: 14,
+            scaleControl: true,
+            logoControl: true,
+            mapDataControl: true,
+            mapTypeControl: true,
+            zoomControl: true,
+            zoomControlOptions: {
+                position: naver.maps.Position.RIGHT_CENTER
+            },
+        };
+        var naver_map = new naver.maps.Map($('#test_naver_map')[0], mapOptions);  // 제이쿼리 포장을 [0]을 붙여서 벗긴다.   Jquery 사용할때 이용
+        naver_map.setMapTypeId(naver.maps.MapTypeId.NORMAL);
+
+        // var HOME_PATH = window.HOME_PATH || '.';
+
+        function test() {
+            alert('in test functino');
+        }
+
+        naver.maps.Event.addListener(naver_map, 'click', mark);
+        var contentString = [
+            '<input type="text" name="address" class="form-control" placeholder="도로명 주소 입력" id="address">',
+            '<button type="submit" >추가</button>',
+            '   <button type="button" id="todosave">저장</button>',
+            '   </p>',
+            '</div>'
+        ].join('');
+
+        var infowindow = new naver.maps.InfoWindow({
+            content: contentString,
+            maxWidth: 200,
+            backgroundColor: "#eee",
+            borderColor: "#2db400",
+            borderWidth: 5,
+            anchorSize: new naver.maps.Size(30, 30),
+            anchorSkew: true,
+            anchorColor: "#eee",
+            pixelOffset: new naver.maps.Point(20, -20)
+        });
+
+        var storage_key = "content";
+        //geocoding
+        $('#btn_address').click(function () {
+            new daum.Postcode({
+                oncomplete: function (data) {
+                    console.log(data);
+                   // $('#address').val(data.address);
+                    naver.maps.Service.geocode({
+                        address: data.address
+                    }, function (status, response) {
+                        if (status !== naver.maps.Service.Status.OK) {
+                            return alert('Something wrong!');
+                        }
+
+                        var result = response.result, // 검색 결과의 컨테이너
+                            items = result.items; // 검색 결과의 배열
+                        console.log(items[0]);
+
+                        var item = items[0];
+                        var marker = new naver.maps.Marker({
+                            position: new naver.maps.Point(item.point.x, item.point.y),
+                            map: naver_map
+                            // do Something
+                        });
+                        naver_map.setCenter(new naver.maps.Point(item.point.x, item.point.y));
+                        naver.maps.Event.addListener(marker, "click", function (e) {
+                        console.log("ahah")
+                        if (infowindow.getMap()) {
+                            infowindow.close();
+                        } else {
+                        infowindow.open(naver_map, marker);
+                }
+            });
+                        // naver.maps.Event.addListener(marker, 'click', test2);
+                    });
+                }
+            }).open();
+        })
+
+
+
+
+        // infowindow.open(naver_map, marker);
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

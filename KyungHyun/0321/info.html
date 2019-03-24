@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=arlv2niolv&submodules=geocoder"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="test_naver_map" style="width:50%;height:500px;"></div>
+
+    <input type="text" id="address"><button id="btn_address">주소찾기</button>
+
+    <script>
+         var mapOptions = {
+            center: new naver.maps.LatLng(37.5666805, 126.9784147),
+            zoom: 14,
+            scaleControl: true,
+            logoControl: true,
+            mapDataControl: true,
+            mapTypeControl: true,
+            zoomControl: true,
+            zoomControlOptions: {
+                position: naver.maps.Position.RIGHT_CENTER
+            },
+        };                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+         var naver_map = new naver.maps.Map($('#test_naver_map')[0], mapOptions);  // 제이쿼리 포장을 [0]을 붙여서 벗긴다.   Jquery 사용할때 이용
+         naver_map.setMapTypeId(naver.maps.MapTypeId.NORMAL);
+        // var HOME_PATH = window.HOME_PATH || '.';
+            
+        var cityhall = new naver.maps.LatLng(37.5666805, 126.9784147),
+            naver_map = new naver.maps.Map($('#test_naver_map')[0], {
+                center: cityhall.destinationPoint(0, 500),
+                zoom: 10
+            }),
+            marker = new naver.maps.Marker({
+                map: naver_map,
+                position: new naver.maps.LatLng(37.5666805, 126.9784147),
+            });
+            naver_map.setCenter(cityhall);
+
+        var contentString = [
+            '<input type="text">',
+            '   <input>',
+            '   <p>서울특별시 중구 태평로1가 31 | 서울특별시 중구 세종대로 110 서울특별시청<br />',
+            '       02-120 | 공공,사회기관 &gt; 특별,광역시청<br />',
+            '       <a href="http://www.seoul.go.kr" target="_blank">www.seoul.go.kr/</a>',
+            '   </p>',
+            '</div>'
+        ].join('');
+
+        var infowindow = new naver.maps.InfoWindow({
+            content: contentString,
+            maxWidth: 200,
+            backgroundColor: "#eee",
+            borderColor: "#2db400",
+            borderWidth: 5,
+            anchorSize: new naver.maps.Size(30, 30),
+            anchorSkew: true,
+            anchorColor: "#eee",
+            pixelOffset: new naver.maps.Point(20, -20)
+        });
+
+        naver.maps.Event.addListener(marker, "click", function (e) {
+            console.log("ahah")
+            if (infowindow.getMap()) {
+                infowindow.close();
+            } else {
+                infowindow.open(naver_map, marker);
+            }
+        });
+
+        // infowindow.open(naver_map, marker);
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

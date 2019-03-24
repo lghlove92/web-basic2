@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        body{
+            text-align: center;
+        }
+        div{
+            border:1px solid black;
+        }
+        .master {
+            width: 1500px;
+            /* align-content: center; */
+            display: inline-block;
+        }
+
+        header {
+            width: 100%;
+            position: relative;
+        }
+
+        #body {
+            width: 100%;
+            position: relative;
+        }
+
+        .header_container1 {
+            height: 50px;
+            /* border: 1px solid black; */
+            /* background-color: #ff0; */
+        }
+
+        .header_container2 {
+            height: 50px;
+            /* border: 1px solid black; */
+            /* background-color: red; */
+        }
+
+        .body_container1 {
+            height: 50px;
+            /* border: 1px solid black; */
+            /* background-color: pink; */
+        }
+
+        .body_container2 {
+            height: 50px;
+            /* border: 1px solid black; */
+            /* background-color: palevioletred; */
+            border-top-width: 2px;
+            border-top-color: black;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+
+            background-color: green;
+            /* position: absolute; */
+            top: 0;
+            left: 0;
+        }
+
+        #logo_size {
+            /* display: block; */
+            width: 100px;
+            height: 100px;
+            margin-bottom: -3px;
+            margin-left: -2px;
+        }
+
+        .user {
+            /* margin-top: 15px; */
+            float: right;
+            background-color: #fff;
+        }
+
+        .nav {
+            width: calc(100px);
+            margin-left: 100px;
+            background-color: #fff;
+            /* width: 500px; */
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .list {
+            margin: 0;
+            padding: 0;
+        }
+
+        .list li {
+            display: inline-block;
+        }
+
+        .search {
+            float: right;
+        }
+
+        /* #body_top_bar {
+            margin-top: 15px;
+        } */
+        
+        .main_main {
+            right: 0;
+            width: 49%;
+            /* border: 1px solid black; */
+            /* background: red; */
+            height: 720px;
+            /* max-width: 100%; */
+            padding-left: 2%;
+            display: inline-block;
+        }
+
+        /* #main_img {
+            width: 100%;
+            height: 720px;
+            display: inline-block;
+             border:1px solid black; 
+        } */
+        .main_img{
+            width: 49%;
+            display: inline-block;
+        }
+       /*  .main_img_main{
+            width: 100%;
+            height: 720px;
+        } */
+        .body_main{
+            text-align: left;
+            
+        }
+        /* .main_main_star {
+
+            border: 1px solid black;
+        }
+
+        .main_main_name {
+
+            border: 1px solid black;
+
+        }
+
+        .main_main_price {
+            border: 1px solid black;
+
+        }
+
+        .main_main_image {
+            border: 1px solid black;
+
+        }
+
+        .main_main_size {
+            border: 1px solid black;
+
+        } */
+
+        .prc {
+            position: relative;
+            font: 16px 'adihaus-bold';
+            color: #000;
+            /* vertical-align: baseline; */
+        }
+
+        #colorsize {
+            margin-bottom: 13px;
+            font: 12px/12px 'adihaus';
+            color: #999;
+        }
+
+        .main_main_image_img01 {
+            display: inline-block;
+            /*  글자처럼취급 */
+            border: 0;
+            margin-right: 10px;
+        }
+
+        .main_main_image_img01:hover {
+            border-bottom: 2px solid navy;
+        }
+
+        .main_main_image_img02 {
+            display: inline-block;
+            /*  글자처럼취급 */
+            border: 0;
+            margin-right: 10px;
+        }
+
+        .main_main_image_img02:hover {
+            border-bottom: 2px solid navy;
+        }
+
+        .main_main_image_img03 {
+            display: inline-block;
+            /*  글자처럼취급 */
+            border: 0;
+            margin-right: 10px;
+        }
+
+        .main_main_image_img03:hover {
+            border-bottom: 2px solid navy;
+        }
+
+        .main_main_image_img04 {
+            display: inline-block;
+            /*  글자처럼취급 */
+            border: 0;
+            margin-right: 10px;
+        }
+
+        .main_main_image_img04:hover {
+            border-bottom: 2px solid navy;
+        }
+
+        .main_main_image_img05 {
+            display: inline-block;
+            /*  글자처럼취급 */
+            border: 0;
+            margin-right: 10px;
+        }
+
+        .main_main_image_img05:hover {
+            border-bottom: 2px solid navy;
+        }
+        .main_main_size_chart{
+            width: 106px;
+            height: 23px;
+            float: left;
+            display: block;
+            color: #027dbf;
+            font: 400 12px/23px 'NotoSansKR','Nanum Gothic';
+            text-align: center;
+            border: 2px solid #027dbf;
+        }
+        .main_main_size_selec_size{
+          
+            display: inline-block;
+        }
+        .main_main_size_selec_size_box{
+            width: 200px;
+            display: inline-block;
+            text-align:center;
+        }
+        .main_main_size_selec_amount{
+            
+            display: inline-block; 
+        }
+        .main_main_size_selec_amount_box{
+            width: 200px;
+            /* display: inline-block; */
+        }
+        .main_main_date{
+            width: 550px;
+            border-top: 2px solid gray;
+            border-bottom: 2px dotted gray;
+        }
+        select{
+
+            text-align-last:center;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="master">
+        <div class="header">
+            <div class="header_container1">
+                <div class="logo"><img src="image/logo.png" id="logo_size"></div>
+                <div class="user">
+                    <ul class="list">
+                        <li>가입</li>
+                        <li>로그인</li>
+                        <li>기타</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="header_container2">
+                <div class="nav">네비</div>
+                <div class="search">검색</div>
+            </div>
+        </div>
+        </header>
+        <div class="body">
+            <div class="body_container1">
+                <!-- <div class="row justify-content-md-center">
+                     <div class="col col-lg-2" id="body_top_bar">
+                        스피드 배송 안내
+                    </div>
+                    <div class="col col-lg-2" id="body_top_bar">
+                        입고알림 서비스
+                    </div>
+                    <div class="col col-lg-2" id="body_top_bar">
+                        교환, 환불은 이렇게
+                    </div> 
+                </div>-->
+            </div>
+            <div class="body_container2">
+
+            </div>
+            <div class="body_main">
+                <!-- 이미지 -->
+                <div class="main_img">
+                    <div class="main_img_main">
+                        <img src="image/main_01.jpg" id="main_img" style="width: 100%; height: 720px;display: inline-block;">
+                    </div>
+                </div>
+                <div class="main_main" >
+                    <div class="main_main_star">
+                        <img src="image/star.png">
+                    </div>
+                    <div class="main_main_name">
+                        <p class="ctgr">MEN'S RUNNING</p>
+                        <h2>울트라부스트19</h2>
+                    </div>
+                    <div class="main_main_price">
+                        <span class="prc">219,000<span class="won">원</span></span>
+                    </div>
+                    <div class="main_main_image">
+                        <p id="colorsize">Color BLACK [B37704]</p>
+                        <div class="main_main_image_img01">
+                            <img src="image/main_main_image01.jpg" width="100px" height="100px">
+                        </div>
+                        <div class="main_main_image_img02">
+                            <img src="image/main_main_image02.jpg" width="100px" height="100px">
+                        </div>
+                        <div class="main_main_image_img03">
+                            <img src="image/main_main_image03.jpg" width="100px" height="100px">
+                        </div>
+                        <div class="main_main_image_img04">
+                            <img src="image/main_main_image04.jpg" width="100px" height="100px">
+                        </div>
+                        <div class="main_main_image_img05">
+                            <img src="image/main_main_image05.jpg" width="100px" height="100px">
+                        </div>
+
+                        <p></p>
+                    </div>
+                    <div class="main_main_size">
+                    
+                        <p class="main_main_size_chart">사이즈 차트 보기</p>
+                        <br>
+                        <p></p>
+                        <div class="main_main_size_selec">
+                            <div class="main_main_size_selec_size">
+                                <select class="main_main_size_selec_size_box">
+                                    <option>사이즈 선택</option>
+                                    <!-- <option value="1">1,000원 1장</option> -->
+                                </select>
+                            </div>
+                            <div class="main_main_size_selec_amount">
+                                <select class="main_main_size_selec_amount_box">
+                                    <option>수량 선택</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <div style=" display: inline-block; padding: 10px 0px;">고객님께 꼭 맞는 사이즈를 찾아보세요!</div>
+                            <div style=" display: inline-block; padding: 10px 0px;">단, 실측 사이즈가 아닌 추천 사이즈이므로 구입 시 참고바랍니다.</div>
+                        </div>
+                    </div>
+                    <div class="main_main_date">
+                        <div></div>
+                        <div>sdf</div>
+                        <div>sadfasdfasf</div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="product-description">
+                <div class="ct950">
+                    <div class="prd_title">
+                        <p class="ctgr">MEN'S RUNNING</p>
+                        <p class="tit">울트라부스트19</p>
+                    </div>
+                    <div class="desc" id="PROD_CONTENT" style="text-align:left;">
+                        러닝의 재발견. 비할 수 없는 편안함과 파워풀한 에너지 리턴을 선사하는 하이 퍼포먼스 뉴트럴 러닝화입니다. 가볍고 추진력이 뛰어난 디자인과 함께 모션 패턴 테크놀로지가 적용된 무봉제 니트 갑피가 달리는 동안 발을 단단하게 잡아주는 동시에 자유롭게 움직일 수 있는 뛰어난 유연성을 선사합니다. 피부처럼 밀착된 핏이 발의 형태에 맞춰 변화하면서 압력을 줄여줍니다. 아디다스 프라임니트 360: 완벽하게 발을 감싸는 엔지니어드 핏의 최적화된 지지력으로 움직임을 끌어올리는 아디다스 프라임니트 갑피 / 무한한 에너지: 에너지 리턴 속성으로 아디다스 개발 테크놀로지 중 가장 우수한 반응성과 쿠셔닝을 선사하는 부스트(Boost): 움직이는 만큼 더 파워풀하게 충전되는 에너지 / 3D 힐 프레임: 자연스러운 핏으로 아킬레스건 움직임을 최적화시키는 핏카운터(Fitcounter) 몰드 힐 카운터 / 멈추지 않는 지지력: 미드솔과 결합된 구조로 토 오프 시 지면을 밀어내고 앞으로 추진할 때 안정적인 지지력을 더해주는 토션 스프링(Torsion Spring)<br><br>• 장거리 시티 러닝을 리드하는 무한한 에너지<br>• 레귤러 핏<br>• 신발끈<br>• 서포티브 아디다스 프라임니트 360<br>• 유연한 스트레치웹(Stretchweb) 아웃솔; 젖은 표면과 마른 표면에서 최상의 접지력을 발휘하는 컨티넨탈 러버(Continental™ Rubber) 아웃솔; 미드풋 케이지<br>• 놀라운 반발력의 부스트(Boost) 미드솔; 안정감을 제공하는 토션 스프링(Torsion Spring)<br>• 경량의 어댑티브 구조<br>• 중량: 310 g (사이즈 270mm)<br>• 미드솔 굽높이: 10 mm (뒤꿈치: 29 mm / 앞발: 19 mm)<br>• 아치 타입: 보통; 가벼운 어댑티브 3D 힐 프레임<br>&nbsp;</div>
+
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
